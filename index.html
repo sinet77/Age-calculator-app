@@ -26,16 +26,29 @@
 <body>
   <div class="background">
     <div class="white-board">
-      <div class="date-texts">
-        <div id="day-text">DAY</div>
-        <div id="month-text">MONTH</div>
-        <div id="year-text">YEAR</div>
-      </div>
       <div class="bars">
-        <input type="text" id="bar1" value="DD">
-        <input type="text" id="bar2" value="MM">
-        <input type="text" id="bar3" value="YYYY">
-
+        <div>
+          <label for="day">DAY</label>
+          <input type="number" id="bar1" placeholder="DD">
+        </div>
+        <div>
+          <label for="month">MONTH</label>
+          <input type="number" id="bar2" placeholder="MM">
+        </div>
+        <div>
+          <label for="year">YEAR</label>
+          <input type="number" id="bar3" placeholder="YYYY">
+        </div>
+      </div>
+      <div class="valid-texts">
+        <div class="valid-day" style="display: none;"><i>Must be a valid day</i></div>
+        <div class="valid-month" style="display: none;"><i>Must be a valid month</i></div>
+        <div class="valid-year" style="display: none;"><i>Must be in the past</i></div>
+      </div>
+      <div class="field-texts">
+        <div class="field" style="display: none;"><i>This field is required</i></div>
+        <div class="field" style="display: none;"><i>This field is required</i></div>
+        <div class="field" style="display: none;"><i>This field is required</i></div>
       </div>
       <div class="arrow-line">
         <div class="line"></div>
@@ -43,29 +56,24 @@
           &#8595; <!-- Strzałka w dół -->
         </button>
       </div>
-      <div class="main-texts">
-        <div class="dash"><i>--</i></div>
-        <div class="main"><i>years</i></div>
-        <div class="dash"><i>--</i></div>
-        <div class="main"><i>months</i></div>
-        <div class="dash"><i>--</i></div>
-        <div class="main"><i>days</i></div>
+      <div class="item">
+        <div class="dash1"><i>--</i></div>
+        <div class="main1"><i>years</i></div>
       </div>
+      <div class="item">
+        <div class="dash2"><i>--</i></div>
+        <div class="main2"><i>months</i></div>
+      </div>
+      <div class="item">
+        <div class="dash3"><i>--</i></div>
+        <div class="main3"><i>days</i></div>
+      </div>
+
     </div>
 
   </div>
-  <!-- Day
-  DD
 
-  Month
-  MM
-
-  Year
-  YYYY
-
-  -- years
-  -- months
-  -- days -->
+  <script src="app.js"></script>
 
 </body>
 
