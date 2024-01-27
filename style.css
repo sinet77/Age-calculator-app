@@ -31,17 +31,17 @@
 
 .line {
     height: 1.5px;
-    background: hsl(0, 1%, 44%, 0.1);
-
+    /* background: hsl(0, 1%, 44%, 0.1); */
     flex-grow: 1;
     /* Dodane, aby zajmować dostępne miejsce w pionie */
-
+    background: black;
+    
 }
 
 .bars {
     display: flex;
     flex-direction: row;
-    
+    margin-bottom: 50px;
 
 
 }
@@ -108,34 +108,13 @@ label {
     letter-spacing: 2px;
     font-weight: bold;
 }
-.valid-texts,.field {
+.error-text {
     display: flex;
     flex-direction: row;
-    margin-bottom: 50px;
     margin-top: 8px;
     font-size: 10px;
     color: hsl(0, 100%, 67%);
     
-}
-.valid-month{
-    margin-left:60px;
-
-}
-.valid-year{
-    margin-left:50px
-}
-/* #day-text{
-
-
-} */
-#month-text {
-
-    margin-left: 115px;
-}
-
-#year-text {
-    margin-left: 90px;
-
 }
 
 .circle-button {
@@ -161,7 +140,9 @@ label {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: -50px;
+    margin-top: 80px;
+    margin-bottom: -50px;
+    width: 100%;
 
 }
 
@@ -181,10 +162,3 @@ label {
     color: hsl(259, 100%, 65%);
 } 
 
-/* .main {
-    display: flex;
-
-    margin-left: 70px;
-    margin-bottom: 20px;
-    padding-bottom: 30px;
-}  */

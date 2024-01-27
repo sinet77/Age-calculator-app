@@ -4,14 +4,11 @@
     let dash1 = document.querySelector('.dash1');
     let dash2 = document.querySelector('.dash2');
     let dash3 = document.querySelector('.dash3');
-    let mainTexts = document.querySelector('.item');
     let bar1 = document.getElementById('bar1');
     let bar2 = document.getElementById('bar2');
     let bar3 = document.getElementById('bar3');
-    let validDay = document.querySelector('.valid-day')
-    let validMonth = document.querySelector('.valid-month')
-    let validYear = document.querySelector('.valid-year')
-    let field = document.querySelector('.field')
+
+
 
     let currentDate = new Date();
     let day = currentDate.getDate(); // dzień od 1 do 31
@@ -23,16 +20,16 @@
         label.style.color = color;
     }
 
-    function calculateAndDisplayResults() {
-        let result1,result2,result3;
-        let originalDash1Value = dash1.textContent;
+    function calculateAndDisplayResults() { // ma oblcizac tylko z tymi dobrymi danymi
+        let result1, result2, result3;
 
-        if (bar3.value > year) {
-            validYear.style.display = "block";
-            dash1.textContent = originalDash1Value;
+
+        if (bar3.value < year) {
+
+            // dash1.textContent = '--';
         } else {
             result1 = year - bar3.value;
-            
+            dash1.textContent = result1;
         }
 
         if (bar2.value > month) {
@@ -47,26 +44,18 @@
             result3 = day - bar1.value;
         }
 
-        dash1.textContent = result1;
+        
         dash2.textContent = result2;
         dash3.textContent = result3;
 
+        // wiem ze tu cos trzeba zmienic ale nie mam pojecia jak
     }
 
     // Funkcja sprawdzająca i wyświetlająca czerwone błędy
-    function checkAndDisplayError(element, condition) {
+    function checkAndDisplayError(element, condition,dash) {
         if (condition) {
             element.style.display = "block";
-
-        } else {
-            element.style.display = "none";
-
-        }
-    }
-    function checkIfBarsFilled(element, condition) {
-        if (condition) {
-            element.style.display = "block";
-            text.style.display = "none";
+            dash.textContent = "--"
 
         } else {
             element.style.display = "none";
@@ -75,53 +64,47 @@
     }
 
 
-
-    bar1.addEventListener('keyup', function (event) {
-
-        checkIfBarsFilled(field, bar1.value.trim() === "", validDay)
-        if (event.key === 'Enter') {
-
-            checkAndDisplayError(validDay, bar1.value < 1 || bar1.value > 31);
-            calculateAndDisplayResults();
-
+    function checkIfBarsFilled() {
+        if (bar1.value.trim() === "") {
+            validDay.textContent = "This field is required"
+            dash1.textContent = "--"
+        } if (bar2.value.trim() === "") {
+            validMonth.textContent = "This field is required"
+            dash2.textContent = "--"
+        } if (bar3.value.trim() === "") {
+            validYear.textContent = "This field is required"
+            dash3.textContent = "--"
         }
-    });
 
-    bar2.addEventListener('keyup', function (event) {
-
-        checkIfBarsFilled(field, bar2.value.trim() === "", validMonth)
-        if (event.key === 'Enter') {
-
-            checkAndDisplayError(validMonth, bar2.value < 1 || bar2.value > 12);
-            calculateAndDisplayResults();
-
-        }
-    });
-
-    bar3.addEventListener('keyup', function (event) {
-
-        checkIfBarsFilled(field, bar3.value.trim() === "", validYear)
-        if (event.key === 'Enter') {
-
-            checkAndDisplayError(validYear, bar3.value > year);
-            calculateAndDisplayResults();
-
-        }
-    });
+    }
 
 
-    circleButton.addEventListener('click', function () {
-        checkIfBarsFilled(field, bar1.value.trim() === "")
-        checkIfBarsFilled(field, bar2.value.trim() === "")
-        checkIfBarsFilled(field, bar3.value.trim() === "")
-        checkAndDisplayError(validDay, bar1.value < 1 || bar1.value > 31);
-        checkAndDisplayError(validMonth, bar2.value < 1 || bar2.value > 12);
-        checkAndDisplayError(validYear, bar3.value < 1 || bar3.value > 2024);
+    const validDay = document.querySelector('#dayError')
+    const validMonth = document.querySelector('#monthError')
+    const validYear = document.querySelector('#yearError')
+    const form = document.querySelector('#form');
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const bar1Value = bar1.value;
+        const bar2Value = bar2.value;
+        const bar3Value = bar3.value;  
 
 
-    });
+        validDay.textContent = "Must be a valid day";
+        validMonth.textContent = "Must be a valid month";
+        validYear.textContent = "Must be in the past";
 
+        checkIfBarsFilled();
+        
+        checkAndDisplayError(validDay, bar1Value < 1 || bar1Value > 31, dash1);
+        checkAndDisplayError(validMonth, bar2Value < 1 || bar2Value > 12, dash2);
+        checkAndDisplayError(validYear, bar3Value < 1 || bar3Value > year, dash3);
+        
+        
 
+        calculateAndDisplayResults();
+    })
 
 
 
