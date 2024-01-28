@@ -1,13 +1,16 @@
 (function () {
 
-    let circleButton = document.querySelector('.circle-button')
+
     let dash1 = document.querySelector('.dash1');
     let dash2 = document.querySelector('.dash2');
     let dash3 = document.querySelector('.dash3');
     let bar1 = document.getElementById('bar1');
     let bar2 = document.getElementById('bar2');
     let bar3 = document.getElementById('bar3');
-
+    let dayLabel = document.getElementById('dayLabel');
+    let dayMonth = document.getElementById('dayMonth');
+    let dayYear = document.getElementById('dayYear');
+    let isValid = true;
 
 
     let currentDate = new Date();
@@ -25,12 +28,8 @@
 
 
         if (bar3.value < year) {
-
-            // dash1.textContent = '--';
-        } else {
             result1 = year - bar3.value;
-            dash1.textContent = result1;
-        }
+        } 
 
         if (bar2.value > month) {
             result2 = bar2.value - month
@@ -44,7 +43,7 @@
             result3 = day - bar1.value;
         }
 
-        
+        dash1.textContent = result1;
         dash2.textContent = result2;
         dash3.textContent = result3;
 
@@ -56,6 +55,7 @@
         if (condition) {
             element.style.display = "block";
             dash.textContent = "--"
+            isValid = false;
 
         } else {
             element.style.display = "none";
@@ -68,12 +68,16 @@
         if (bar1.value.trim() === "") {
             validDay.textContent = "This field is required"
             dash1.textContent = "--"
+            
+            isValid = false;
         } if (bar2.value.trim() === "") {
             validMonth.textContent = "This field is required"
             dash2.textContent = "--"
+            isValid = false;
         } if (bar3.value.trim() === "") {
             validYear.textContent = "This field is required"
             dash3.textContent = "--"
+            isValid = false;
         }
 
     }
@@ -102,8 +106,10 @@
         checkAndDisplayError(validYear, bar3Value < 1 || bar3Value > year, dash3);
         
         
-
-        calculateAndDisplayResults();
+        if(isValid === true){
+            calculateAndDisplayResults();
+        }
+        
     })
 
 
