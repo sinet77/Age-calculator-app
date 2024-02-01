@@ -33,20 +33,18 @@
 .line {
     width: 50%;
     height: 1.5px;
-    /* background: hsl(0, 1%, 44%, 0.1); */
+    background: hsl(0, 1%, 44%, 0.1);
     flex-grow: 1;
     /* Dodane, aby zajmować dostępne miejsce w pionie */
-    background: black;
 
 
-    left: 50px; /* Dodane ustawienie lewej krawędzi */
 
 }
 
 .bars {
     display: flex;
     flex-direction: row;
-    margin-bottom: 50px;
+
 
 
 }
@@ -134,7 +132,7 @@ label {
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
-    margin-left: 0px;
+
 
 }
 
@@ -146,11 +144,8 @@ label {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 80px;
-    margin-bottom: -50px;
-    margin-left: -25px;
     width: 100%;
-
+    
 }
 
 .item {
